@@ -6,7 +6,7 @@ package RTDevSys::Cmd::Command::workflows;
 
 =head1 NAME
 
-package RTDevSys::Cmd::Command::workflows;
+RTDevSys::Cmd::Command::workflows
 
 =head1 EARLY VERSION WARNING
 

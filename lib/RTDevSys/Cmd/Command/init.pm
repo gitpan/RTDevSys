@@ -6,7 +6,7 @@ package RTDevSys::Cmd::Command::init;
 
 =head1 NAME
 
-package RTDevSys::Cmd::Command::init;
+RTDevSys::Cmd::Command::init - Command for initializing an RT project folder.
 
 =head1 EARLY VERSION WARNING
 

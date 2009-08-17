@@ -6,7 +6,7 @@ package RTDevSys::Workflows;
 
 =head1 NAME
 
-RTDevSys::Workflows
+RTDevSys::Workflows.
 
 =head1 EARLY VERSION WARNING
 

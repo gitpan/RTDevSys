@@ -29,6 +29,19 @@ extends qw/MooseX::App::Cmd/;
 
 __END__
 
+=pod
+
+=head1 NAME
+
+RTDevSys::Cmd - MooseX::App::Cmd subclass for RTDevSys commands.
+
+=head1 EARLY VERSION WARNING
+
+This is a very early version of RTDevSys. It is ready for use, and in fact is
+being used. However there may be some API changes in the future. As well there
+may be some missing, incomplete, or untested features. At the moment the
+database commands only support postgres not mysql.
+
 =head1 AUTHORS
 
 Chad Granum E<lt>chad@opensourcery.comE<gt>

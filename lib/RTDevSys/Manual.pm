@@ -1,18 +1,12 @@
-#!/usr/bin/perl
 package RTDevSys::Manual;
 use strict;
 use warnings;
-
-1;
-
-__END__
 
 =pod
 
 =head1 NAME
 
-RTDevSys - A development, deployment, and management system for RT
-installations.
+RTDevSys::Manual - The RTDevSys Manual.
 
 =head1 EARLY VERSION WARNING
 
@@ -308,3 +302,5 @@ an already deployed RT.
 =item RTDevSys commands to create an empty migration.
 
 =cut
+
+1;
