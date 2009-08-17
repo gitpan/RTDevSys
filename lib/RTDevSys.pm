@@ -7,7 +7,7 @@ use RTDevSys::Config;
 use RTDevSys::Config::Build;
 use Carp;
 
-our $VERSION = 0.02;
+our $VERSION = 0.03;
 
 #{{{ Steal STDOUT before RT can.
 our $STDOUT;

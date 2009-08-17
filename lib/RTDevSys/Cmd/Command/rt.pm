@@ -19,7 +19,7 @@ database commands only support postgres not mysql.
 
 This class is a command used to install, uninstall, and patch RT.
 
-=head SYNOPSIS
+=head1 SYNOPSIS
 
     $ rtdevsys rt --install
     $ rtdevsys rt --uninstall
@@ -350,6 +350,8 @@ sub test_rt {
 1;
 
 __END__
+
+=back
 
 =head1 AUTHORS
 
