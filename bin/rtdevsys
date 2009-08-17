@@ -1,0 +1,26 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+
+# Add the inc path ASAP
+BEGIN {
+    use RTDevSys;
+    use RTDevSys::Util;
+    # There are 2 key params we need to parse from the command line BEFORE we
+    # can build @INC properly. We also need to leave them in place for the
+    # commands to parse out later.
+    for( my $i = 0; $i < @ARGV; $i++ ) {
+        if ( $ARGV[$i] eq '--build' ) {
+            RTDevSys->BUILD( $ARGV[$i + 1] );
+        }
+        elsif ( $ARGV[$i] eq '--rthome' ) {
+            RTDevSys->RTHOME( $ARGV[$i + 1] );
+        }
+    }
+    RTDevSys::Util::add_inc();
+}
+
+# Now we can start the command process.
+use RTDevSys::Cmd;
+my $cmd = RTDevSys::Cmd->new();
+$cmd->run();

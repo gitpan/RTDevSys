@@ -1,0 +1,38 @@
+---
+# If a plugin or workflow is not listed it will be skipped
+# If disable: is true the workflow or plugin will be skipped
+# If stable: is missing then the plugin or workflow will not be installed in stable
+# If demo: is missing then it will default to stable
+# If nothing is listed it is the same as disable
+#The system version
+system:
+  db_version:
+    stable: 5
+    demo: 9
+
+#plugin versions
+plugin:
+  FAKE_P:
+    stable: 0
+    demo: 1
+
+  FAKE_P2:
+    stable: 1
+    demo: 1
+
+#workflow versions
+workflow:
+  FAKE_W:
+    stable: 2
+    demo: 5
+  DISABLED_EXP:
+    stable: 1
+    demo: 1
+    disable: 1
+  DISABLED_IMP:
+  NO_MIGRATIONS:
+    stable: 0
+    demo: 0
+  MIGRATIONS:
+    stable: 0
+    demo: 0

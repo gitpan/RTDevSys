@@ -1,0 +1,45 @@
+---
+abstract: 'A development, deployment, and management system for RT'
+author:
+  - 'Chad Granum <chad@opensourcery.com>'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+  Test::More: 0.8
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
+distribution_type: module
+generated_by: 'Module::Install version 0.91'
+license: GPL
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: RTDevSys
+no_index:
+  directory:
+    - inc
+    - t
+requires:
+  Cwd: 3.30
+  DBD::Pg: 2.13.1
+  DBD::SQLite: 1.25
+  Data::Dumper: 0
+  Exporter: 5.63
+  ExtUtils::MakeMaker: 6.50
+  Fey: 0.28
+  Fey::DBIManager: 0.10
+  Fey::Loader: 0.10
+  Fey::ORM: 0.24
+  File::Path: 2.07
+  File::Temp: 0.21
+  Module::Build: 0.33
+  Module::Install: 0.88
+  Moose: 0.79
+  MooseX::App::Cmd: 0.04
+  MooseX::ClassAttribute: 0.08
+  String::Diff: 0.04
+  Test::Exception: 0.27
+  Test::More: 0.86
+  YAML::Syck: 1.07
+resources:
+  license: http://opensource.org/licenses/gpl-license.php
+version: 0.01

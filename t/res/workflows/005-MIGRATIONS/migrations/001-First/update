@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "The migration executable has been run!";
