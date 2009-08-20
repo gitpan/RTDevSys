@@ -1,23 +1,14 @@
 ---
-abstract: 'A development, deployment, and management system for RT'
-author:
-  - 'Chad Granum <chad@opensourcery.com>'
-build_requires:
-  ExtUtils::MakeMaker: 6.42
-  Test::More: 0.8
-configure_requires:
-  ExtUtils::MakeMaker: 6.42
-distribution_type: module
-generated_by: 'Module::Install version 0.91'
-license: GPL
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
 name: RTDevSys
-no_index:
-  directory:
-    - inc
-    - t
+version: 0.04
+author:
+  - 'Chad Granum E<lt>chad@opensourcery.comE<gt>'
+abstract: |-
+  A development, deployment, and management system for RT
+  installations.
+license: gpl
+resources:
+  license: http://www.opensource.org/licenses/gpl-license.php
 requires:
   Cwd: 3.30
   DBD::Pg: 2.13.1
@@ -40,6 +31,63 @@ requires:
   Test::Exception: 0.27
   Test::More: 0.86
   YAML::Syck: 1.07
-resources:
-  license: http://opensource.org/licenses/gpl-license.php
-version: 0.03
+build_requires:
+  Test::More: 0.8
+provides:
+  RTDevSys:
+    file: lib/RTDevSys.pm
+    version: 0.04
+  RTDevSys::Cmd:
+    file: lib/RTDevSys/Cmd.pm
+  RTDevSys::Cmd::Command::database:
+    file: lib/RTDevSys/Cmd/Command/database.pm
+  RTDevSys::Cmd::Command::deploy:
+    file: lib/RTDevSys/Cmd/Command/deploy.pm
+  RTDevSys::Cmd::Command::init:
+    file: lib/RTDevSys/Cmd/Command/init.pm
+  RTDevSys::Cmd::Command::plugins:
+    file: lib/RTDevSys/Cmd/Command/plugins.pm
+  RTDevSys::Cmd::Command::rt:
+    file: lib/RTDevSys/Cmd/Command/rt.pm
+  RTDevSys::Cmd::Command::run:
+    file: lib/RTDevSys/Cmd/Command/run.pm
+  RTDevSys::Cmd::Command::server:
+    file: lib/RTDevSys/Cmd/Command/server.pm
+  RTDevSys::Cmd::Command::system:
+    file: lib/RTDevSys/Cmd/Command/system.pm
+  RTDevSys::Cmd::Command::test:
+    file: lib/RTDevSys/Cmd/Command/test.pm
+  RTDevSys::Cmd::Command::versions:
+    file: lib/RTDevSys/Cmd/Command/versions.pm
+  RTDevSys::Cmd::Command::workflows:
+    file: lib/RTDevSys/Cmd/Command/workflows.pm
+  RTDevSys::Cmd::Roles::Standard:
+    file: lib/RTDevSys/Cmd/Roles/Standard.pm
+  RTDevSys::Config:
+    file: lib/RTDevSys/Config.pm
+  RTDevSys::Config::Build:
+    file: lib/RTDevSys/Config/Build.pm
+  RTDevSys::Cron:
+    file: lib/RTDevSys/Cron.pm
+  RTDevSys::DB:
+    file: lib/RTDevSys/DB.pm
+  RTDevSys::DB::Schema:
+    file: lib/RTDevSys/DB/Schema.pm
+  RTDevSys::DB::VersionTable:
+    file: lib/RTDevSys/DB/VersionTable.pm
+  RTDevSys::Manual:
+    file: lib/RTDevSys/Manual.pm
+  RTDevSys::Plugins:
+    file: lib/RTDevSys/Plugins.pm
+  RTDevSys::Test:
+    file: lib/RTDevSys/Test.pm
+  RTDevSys::Util:
+    file: lib/RTDevSys/Util.pm
+  RTDevSys::Versions:
+    file: lib/RTDevSys/Versions.pm
+  RTDevSys::Workflows:
+    file: lib/RTDevSys/Workflows.pm
+generated_by: Module::Build version 0.2808
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2

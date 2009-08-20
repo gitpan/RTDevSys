@@ -6,7 +6,7 @@ package RTDevSys::Cron;
 
 =head1 NAME
 
-package RTDevSys::Cron - Do not use this!
+RTDevSys::Cron - Do not use this!
 
 =head1 EARLY VERSION WARNING
 

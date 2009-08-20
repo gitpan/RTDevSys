@@ -1,14 +1,6 @@
 bin/rtdevsys
+Build.PL
 COPYING
-inc/Module/Install.pm
-inc/Module/Install/Base.pm
-inc/Module/Install/Can.pm
-inc/Module/Install/Fetch.pm
-inc/Module/Install/Makefile.pm
-inc/Module/Install/Metadata.pm
-inc/Module/Install/Scripts.pm
-inc/Module/Install/Win32.pm
-inc/Module/Install/WriteAll.pm
 lib/RTDevSys.pm
 lib/RTDevSys/Cmd.pm
 lib/RTDevSys/Cmd/Command/database.pm
@@ -35,7 +27,6 @@ lib/RTDevSys/Test.pm
 lib/RTDevSys/Util.pm
 lib/RTDevSys/Versions.pm
 lib/RTDevSys/Workflows.pm
-Makefile.PL
 MANIFEST			This list of files
 META.yml
 README
@@ -60,10 +51,23 @@ t/216-Cmd_server.t
 t/217-Cmd_system.t
 t/218-Cmd_test.t
 t/219-Cmd_workflows.t
+t/901-Pod.t
+t/res/migrations/001-A/.keep
+t/res/migrations/002-B/.keep
+t/res/migrations/003-C/.keep
+t/res/migrations/004-D/.keep
+t/res/migrations/005-E/.keep
+t/res/migrations/006-F/.keep
+t/res/migrations/007-G/.keep
+t/res/migrations/008-H/.keep
+t/res/migrations/009-I/.keep
 t/res/plugins/DISABLED_P/etc/initialdata
+t/res/plugins/DISABLED_P/Makefile
 t/res/plugins/DISABLED_P/Makefile.PL
 t/res/plugins/FAKE_P/etc/initialdata
+t/res/plugins/FAKE_P/Makefile
 t/res/plugins/FAKE_P/Makefile.PL
+t/res/plugins/FAKE_P2/Makefile
 t/res/plugins/FAKE_P2/Makefile.PL
 t/res/RTDS_Config.pm
 t/res/versions.yaml
