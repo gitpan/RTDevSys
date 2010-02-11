@@ -144,7 +144,7 @@ command does not exit cleanly.
 sub run_command {
     my $command = shift;
     local %ENV = %{ RTDevSys::local_env() };
-    system( $command ) and die( "Command did not exit cleanly.\n" );
+    system( $command ) and die( "Command did not exit cleanly.\n** $command\n" );
 }
 
 =item load_initialdata
@@ -230,4 +230,3 @@ You should have received a copy of the GNU General Public License
 along with RTDevSys.  If not, see <http://www.gnu.org/licenses/>.
 
 =cut
-

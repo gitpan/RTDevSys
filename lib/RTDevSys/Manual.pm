@@ -12,8 +12,7 @@ RTDevSys::Manual - The RTDevSys Manual.
 
 This is a very early version of RTDevSys. It is ready for use, and in fact is
 being used. However there may be some API changes in the future. As well there
-may be some missing, incomplete, or untested features. At the moment the
-database commands only support postgres not mysql.
+may be some missing, incomplete, or untested features.
 
 =head1 DESCRIPTION
 

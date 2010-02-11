@@ -13,7 +13,13 @@ my $port = RTDevSys->RT_DB_PORT;
 my $user = RTDevSys->RT_DB_USER;
 my $pass = RTDevSys->RT_DB_PASSWORD;
 
-my $dsn = "dbi:$driver:dbname=$db;";
+my %dbname = (
+    Pg => 'dbname',
+    mysql => 'database',
+    SQLite => 'dbname',
+);
+
+my $dsn = "dbi:$driver:" . $dbname{ $driver } . "=$db;";
 $dsn .= "host=$host;" if $host;
 $dsn .= "port=$port;" if $port;
 my $source = Fey::DBIManager::Source->new(

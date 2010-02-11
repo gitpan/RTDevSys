@@ -46,7 +46,7 @@ has 'dump' => (
 has 'mergeable_dump' => (
     isa => "Str",
     is => "rw",
-    documentation => "Dump the database to specified file suitable for merging",
+    documentation => "Dump the database to specified file suitable for merging (postgres only)",
 );
 
 has 'load' => (
@@ -77,6 +77,9 @@ sub run {
     my ($self, $opt, $args) = @_;
 
     require RTDevSys::DB;
+
+    die( "mergeable_dump is a postgres only feature." )
+        if $self->mergeable_dump && RTDevSys->RT_DB_DRIVER ne 'Pg';
 
     RTDevSys::DB::dumpdb( $self->dump ) if $self->dump;
     RTDevSys::DB::loaddb( $self->load ) if $self->load;

@@ -108,6 +108,36 @@ sub sql_command {
     my $file = $params{ file } || "";
     my $flags = $params{ flags } || "";
 
+    my $driver = RTDevSys->RT_DB_DRIVER;
+    my $sub = '_' . $driver . '_command';
+    no strict 'refs';
+    &$sub($base, $append, $file, $flags, %params);
+}
+
+sub _mysql_command {
+    my ( $base, $append, $file, $flags, %params ) = @_;
+
+    chomp( my $password = RTDevSys->RT_DB_PASSWORD );
+    my $dbname = RTDevSys->RT_DB;
+    $flags = " -P" . RTDevSys->RT_DB_PORT
+                  . " -p$password"
+                  . " -h" . RTDevSys->RT_DB_HOST
+                  . " -u" . RTDevSys->RT_DB_USER
+                  . " $flags";
+
+    my %base_map = (
+        'mysql' => 'mysql',
+        'dump' => "mysqldump --add-drop-table $flags  $dbname > $file $append",
+        'load' => "mysql $flags  $dbname < $file",
+        'create' => "echo \"create database $dbname;\" | mysql $flags $append",
+        'drop' => "echo \"drop database $dbname;\" | mysql $flags $append",
+    );
+
+    return $base_map{ $base } || die( "SQL command $base is not supported." );
+}
+
+sub _Pg_command {
+    my ( $base, $append, $file, $flags, %params ) = @_;
     my %base_map = (
         'psql' => 'psql',
         'dump' => "pg_dump -Fc -x -O -f $file",
@@ -119,7 +149,7 @@ sub sql_command {
     my %flag_map = ( 'load' => ' -d ', 'merge' => ' -d ' );
 
     my $dbflag = $flag_map{ $base } || " ";
-    $base = $base_map{ $base };
+    $base = $base_map{ $base } || die( "SQL command $base is not supported." );
 
     chomp( my $password = RTDevSys->RT_DB_PASSWORD );
     my $command = "PGPASSWORD='$password'"

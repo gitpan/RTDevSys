@@ -172,6 +172,20 @@ has dbuser => (
     trigger => sub { shift( @_ ); RTDevSys->RT_DB_USER( @_ ) },
 );
 
+=item dbdriver
+
+Database database user (RT_DB_DRIVER)
+
+=cut
+
+has dbdriver => (
+    isa => "Str",
+    is => "rw",
+    documentation => "Database database user (RT_DB_DRIVER)",
+    trigger => sub { shift( @_ ); RTDevSys->RT_DB_DRIVER( @_ ) },
+);
+
+
 =item dbport
 
 Database port number (RT_DB_PORT)

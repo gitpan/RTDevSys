@@ -68,6 +68,13 @@ has 'system_migrations' => (
     default => "migrations",
 );
 
+has 'database_driver' => (
+    isa => "Str",
+    is => 'rw',
+    documentation => 'database driver to use (Pg or mysql)',
+    default => 'Pg',
+);
+
 sub abstract { "Initialize a project directory" }
 
 sub usage_desc {
@@ -100,6 +107,7 @@ sub RTDS_Config {
     my $plugins    = $self->plugins;
     my $versions_table    = $self->versions_table;
     my $system_migrations = $self->system_migrations;
+    my $driver = $self->database_driver;
 
     return <<EOT;
 use strict;
@@ -123,7 +131,7 @@ my \$config = RTDevSys::Config->new(
         RT_DB_HOST   => "127.0.0.1",
         RT_DB_PORT   => 5432,
         RT_DB_USER   => \$ENV{ USER },
-        RT_DB_DRIVER    => "Pg",
+        RT_DB_DRIVER    => "$driver",
         RT_DB_PASSWORD  => sub { chomp( my \$p = `cat db_pass` ); \$p },
         RT_USER      => \$ENV{ USER },
         RT_GROUP     => "users",
@@ -143,7 +151,7 @@ my \$config = RTDevSys::Config->new(
         RT_DB_HOST   => "127.0.0.1",
         RT_DB_PORT   => 5432,
         RT_DB_USER   => \$ENV{ USER },
-        RT_DB_DRIVER    => "Pg",
+        RT_DB_DRIVER    => "$driver",
         RT_DB_PASSWORD  => sub { chomp( my \$p = `cat db_pass` ); \$p },
         RT_USER      => \$ENV{ USER },
         RT_GROUP     => "users",
@@ -163,7 +171,7 @@ my \$config = RTDevSys::Config->new(
         RT_DB_HOST   => "127.0.0.1",
         RT_DB_PORT   => 5432,
         RT_DB_USER   => \$ENV{ USER },
-        RT_DB_DRIVER    => "Pg",
+        RT_DB_DRIVER    => "$driver",
         RT_DB_PASSWORD  => sub { chomp( my \$p = `cat db_pass` ); \$p },
         RT_USER      => \$ENV{ USER },
         RT_GROUP     => "users",

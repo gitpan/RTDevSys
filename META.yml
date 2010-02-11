@@ -1,42 +1,21 @@
 ---
-name: RTDevSys
-version: 0.04
+abstract: "A development, deployment, and management system for RT\ninstallations."
 author:
   - 'Chad Granum E<lt>chad@opensourcery.comE<gt>'
-abstract: |-
-  A development, deployment, and management system for RT
-  installations.
-license: gpl
-resources:
-  license: http://www.opensource.org/licenses/gpl-license.php
-requires:
-  Cwd: 3.30
-  DBD::Pg: 2.13.1
-  DBD::SQLite: 1.25
-  Data::Dumper: 0
-  Exporter: 5.63
-  ExtUtils::MakeMaker: 6.50
-  Fey: 0.28
-  Fey::DBIManager: 0.10
-  Fey::Loader: 0.10
-  Fey::ORM: 0.24
-  File::Path: 2.07
-  File::Temp: 0.21
-  Module::Build: 0.33
-  Module::Install: 0.88
-  Moose: 0.79
-  MooseX::App::Cmd: 0.04
-  MooseX::ClassAttribute: 0.08
-  String::Diff: 0.04
-  Test::Exception: 0.27
-  Test::More: 0.86
-  YAML::Syck: 1.07
 build_requires:
   Test::More: 0.8
+configure_requires:
+  Module::Build: 0.36
+generated_by: 'Module::Build version 0.3601'
+license: gpl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: RTDevSys
 provides:
   RTDevSys:
     file: lib/RTDevSys.pm
-    version: 0.04
+    version: 0.05
   RTDevSys::Cmd:
     file: lib/RTDevSys/Cmd.pm
   RTDevSys::Cmd::Command::database:
@@ -87,7 +66,29 @@ provides:
     file: lib/RTDevSys/Versions.pm
   RTDevSys::Workflows:
     file: lib/RTDevSys/Workflows.pm
-generated_by: Module::Build version 0.2808
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.2.html
-  version: 1.2
+requires:
+  Cwd: 3.30
+  DBD::Pg: v2.13.1
+  DBD::SQLite: 1.25
+  DBD::mysql: 0
+  Data::Dumper: 0
+  Exporter: 5.63
+  ExtUtils::MakeMaker: 6.50
+  Fey: 0.28
+  Fey::DBIManager: 0.10
+  Fey::Loader: 0.10
+  Fey::ORM: 0.24
+  File::Path: 2.07
+  File::Temp: 0.21
+  Module::Build: 0.33
+  Module::Install: 0.88
+  Moose: 0.79
+  MooseX::App::Cmd: 0.04
+  MooseX::ClassAttribute: 0.08
+  String::Diff: 0.04
+  Test::Exception: 0.27
+  Test::More: 0.86
+  YAML::Syck: 1.07
+resources:
+  license: http://opensource.org/licenses/gpl-license.php
+version: 0.05

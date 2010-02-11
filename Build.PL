@@ -24,6 +24,7 @@ my $build = Module::Build->new(
         'Module::Install' => '0.88',
         'String::Diff' => '0.04',
         'DBD::Pg' => '2.13.1',
+        'DBD::mysql' => '0',
         'DBD::SQLite' => '1.25',
         'Data::Dumper' => 0,
     },

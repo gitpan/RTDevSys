@@ -83,13 +83,26 @@ has 'debug' => (
     documentation => "Debug instead of prove",
 );
 
+has 'test_backup_db' => (
+    isa => "Str",
+    is => 'rw',
+    lazy => 1,
+    default => sub { RTDevSys->RT_DB_DRIVER eq 'Pg' ? '.test.psqlc' : '.test.sql' },
+);
+
+has 'test_backup_db_flags' => (
+    isa => "Str",
+    is => 'rw',
+    lazy => 1,
+    default => sub { RTDevSys->RT_DB_DRIVER eq 'Pg' ? '-c' : '' },
+);
 
 sub run {
     my ($self, $opt, $args) = @_;
 
-    unlink( '.test.psqlc' ) if -e '.test.psqlc';
+    unlink( $self->test_backup_db ) if -e $self->test_backup_db;
 
-    backup_db();
+    $self->backup_db();
     unless ( $self->no_data ) {
         # Re-Write this for RTx-NNID
         # Only if we get this far
@@ -114,9 +127,9 @@ sub test_workflows {
 sub test_plugins {
     my $self = shift;
     for my $plugin ( @{ plugin_list() }) {
-        backup_db();
+        $self->backup_db();
         $self->run_tests( "plugins/$plugin/t/*.t" );
-        restore_db();
+        $self->restore_db();
     }
 }
 
@@ -124,7 +137,7 @@ sub test_wrapper {
     my $self = shift;
     my $sub = shift;
 
-    backup_db();
+    $self->backup_db();
 
     unless ( $RAN{ plugins } or $self->no_plugins ) {
         require RTDevSys::Plugins;
@@ -146,20 +159,22 @@ sub test_wrapper {
 }
 
 sub backup_db {
-    if ( -e ".test.psqlc" ) {
+    my $self = shift;
+    if ( -e $self->test_backup_db ) {
         $RESTORE++;
         return
     }
     return if $RESTORE;
     print "Dumping database before test...\n";
-    RTDevSys::DB::dumpdb( '.test.psqlc', flags => '-c' );
+    RTDevSys::DB::dumpdb( $self->test_backup_db, flags => $self->test_backup_db_flags );
     $RESTORE++;
 }
 
 sub restore_db {
+    my $self = shift;
     return unless $RESTORE;
     print "Restoring database...\n";
-    RTDevSys::DB::loaddb( '.test.psqlc', flags => '-c' );
+    RTDevSys::DB::loaddb( $self->test_backup_db, flags => $self->test_backup_db_flags );
     $RESTORE = 0;
 }
 
@@ -178,11 +193,12 @@ sub _run_tests {
     run_command( "$command || true" );
 }
 
-END {
-    if ( $RESTORE and -e ".test.psqlc" ) {
+sub DESTROY {
+    my $self = shift;
+    if ( $RESTORE and -e $self->test_backup_db ) {
         require RTDevSys::DB;
-        restore_db();
-        unlink( '.test.psqlc' ) if -e '.test.psqlc';
+        $self->restore_db();
+        unlink( $self->test_backup_db ) if -e $self->test_backup_db;
     }
 }
 
