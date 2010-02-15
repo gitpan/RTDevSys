@@ -25,6 +25,7 @@ use warnings;
 use RTDevSys;
 use RTDevSys::Util;
 use Carp;
+use Moose;
 use MooseX::ClassAttribute;
 
 use base 'Exporter';

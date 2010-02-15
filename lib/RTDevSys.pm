@@ -1,13 +1,14 @@
 package RTDevSys;
 use strict;
 use warnings;
+use Moose;
 use MooseX::ClassAttribute;
 use RTDevSys::Util;
 use RTDevSys::Config;
 use RTDevSys::Config::Build;
 use Carp;
 
-our $VERSION = 0.05;
+our $VERSION = 0.06;
 
 #{{{ Steal STDOUT before RT can.
 our $STDOUT;

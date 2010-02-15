@@ -22,6 +22,7 @@ database commands only support postgres not mysql.
 use strict;
 use warnings;
 use YAML::Syck;
+use Moose;
 use MooseX::ClassAttribute;
 use RTDevSys::Util;
 use RTDevSys;
